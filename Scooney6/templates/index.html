@@ -5,6 +5,12 @@
     <title>Pokedex - By Scooney6</title>
 </head>
 <body>
+    <h1>Select a version:</h1>
+  {% for i in versions %}
+    <p>
+      {{i}}
+    </p>
+  {% endfor %}
     <form action="/pokedex" method="get">
         <button type="submit" name="test" value="test button">
         </button>
