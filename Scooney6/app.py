@@ -1,7 +1,6 @@
 import pokepy
 import requests
 from flask import Flask, render_template, url_for, request
-from werkzeug.utils import redirect
 from functools import lru_cache
 
 app = Flask(__name__)
@@ -16,13 +15,18 @@ def api_call(url):
 
 @app.route("/")
 def index():
-    # TODO: manually request all versions and display them
-    return render_template("index.html", versions=[versiongroup["name"] for versiongroup in api_call("https://pokeapi.co/api/v2/version-group/")["results"]])
+    return render_template("index.html", versions=[versiongroup["name"] for versiongroup in
+                                                   api_call("https://pokeapi.co/api/v2/version-group/")["results"]])
     # TODO: clicking on a pokedex pulls up the pokemon in that pokedex
     # TODO: add a search bar to search pokemon or pokedexes
-    #pk = pokepy.V2Client().get_pokedex(1)
-    #print(pk[0].pokemon_entries[0].pokemon_species.name)
-    #return redirect(url_for("pokedex", name="national"))
+    # pk = pokepy.V2Client().get_pokedex(1)
+    # print(pk[0].pokemon_entries[0].pokemon_species.name)
+    # return redirect(url_for("pokedex", name="national"))
+
+
+@app.route("/version", methods=["POST", "GET"])
+def version():
+    return render_template("version.html", version=request.args.get('version'))
 
 
 @app.route("/pokedex", methods=["POST", "GET"])

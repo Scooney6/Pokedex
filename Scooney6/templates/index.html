@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <title>Pokedex - By Scooney6</title>
 </head>
 <body>
     <h1>Select a version:</h1>
-  {% for i in versions %}
-    <p>
-      {{i}}
-    </p>
-  {% endfor %}
+    <form action="/version" method="GET">
+        {% for i in versions %}
+            <button class="ui button" type="submit" name="version" value={{i}}>{{i}}</button>
+        {% endfor %}
+    </form>
     <form action="/pokedex" method="get">
         <button type="submit" name="test" value="test button">
         </button>
