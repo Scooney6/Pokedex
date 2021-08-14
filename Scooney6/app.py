@@ -24,9 +24,15 @@ def index():
     # return redirect(url_for("pokedex", name="national"))
 
 
-@app.route("/version", methods=["POST", "GET"])
+@app.route("/version", methods=["GET"])
 def version():
-    return render_template("version.html", version=request.args.get('version'))
+    data = api_call("https://pokeapi.co/api/v2/version-group/%s/" % (request.args.get('version')))
+    generation = data['generation']['name']
+    versions = [versions['name'] for versions in data['versions']]
+    regions = [regions['name'] for regions in data['regions']]
+    pokedexes = [pokedexes['name'] for pokedexes in data['pokedexes']]
+    print(data)
+    return render_template("version.html", version=request.args.get('version'), generation=generation, versions=versions, regions=regions, pokedexes=pokedexes)
 
 
 @app.route("/pokedex", methods=["POST", "GET"])

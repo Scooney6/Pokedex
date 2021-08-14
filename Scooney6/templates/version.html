@@ -5,6 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-<p>{{version}}</p>
+<div>
+    <p>{{version}}</p>
+</div>
+<div>
+    {% for version in versions %}
+        <p>{{version}}</p>
+    {% endfor %}
+</div>
+<div>
+    <p>{{generation}}</p>
+</div>
+<div>
+    {% for region in regions %}
+        <p>{{region}}</p>
+    {% endfor %}
+</div>
+<div>
+    <form action="/pokedex" method="GET">
+        {% for pokedex in pokedexes %}
+            <button class="ui button" type="submit" name="version" value={{pokedex}}>{{pokedex}}</button>
+        {% endfor %}
+    </form>
+</div>
 </body>
 </html>
