@@ -24,7 +24,7 @@
 <div>
     <form action="/pokedex" method="GET">
         {% for pokedex in pokedexes %}
-            <button class="ui button" type="submit" name="version" value={{pokedex}}>{{pokedex}}</button>
+            <button class="ui button" type="submit" name="pokedex" value={{pokedex}}>{{pokedex}}</button>
         {% endfor %}
     </form>
 </div>
