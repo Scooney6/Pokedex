@@ -1,0 +1,23 @@
+.Navbar {
+    padding: 10px;
+    background-color: grey;
+}
+.Buttons {
+    padding: 10px;
+    margin: auto;
+    width: 90%;
+}
+.Row {
+    padding: 2px;
+}
+.Description {
+    padding-top: 10px;
+}
+.Title {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+.Home {
+    float: left;
+}

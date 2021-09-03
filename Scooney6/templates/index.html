@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
     <title>Pokedex - By Scooney6</title>
 </head>
 <body>
-    <h1>Select a version:</h1>
-    <form action="/version" method="GET">
-        {% for i in versions %}
-            <button class="ui button" type="submit" name="version" value={{i}}>{{i}}</button>
-        {% endfor %}
-    </form>
+    <div class="Navbar">
+        <div class="Home">
+            <button class="ui icon button">
+                <i class="home icon"></i>
+            </button>
+        </div>
+        <div class="Title">
+            <h1>Pokedex - By Scooney6</h1>
+        </div>
+    </div>
+    <div class="Description">
+        <h4 style="text-align: center;">Click a version to see more information and the pokedexes for that version!</h4>
+    </div>
+    <div class="Buttons">
+        <form action="/version" method="GET">
+            {% for row in versions | slice(4) %}
+            <div class="Row">
+                {% for version in row %}
+                <button class="ui button" style="width: 220px; margin: auto;" type="submit" name="version" value="{{ version }}">{{ version }}</button>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </form>
+    </div>
 </body>
 </html>

@@ -7,8 +7,9 @@ app = Flask(__name__)
 
 @lru_cache
 def api_call(url):
-    print("fetching")
+    print("Fetching: " + url)
     data = requests.get(url).json()
+    print("Request received: " + str(data))
     return data
 
 
