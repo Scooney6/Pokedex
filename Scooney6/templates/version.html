@@ -2,15 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
     <title>Title</title>
 </head>
 <body>
+    <div class="Navbar">
+        <div class="Home">
+            <form action="/" method="GET">
+                <button class="ui icon button">
+                    <i class="home icon"></i>
+                </button>
+            </form>
+        </div>
+        <div class="Title">
+            <h1>Pokemon {{version}}</h1>
+        </div>
+    </div>
 <div>
-    <p>{{version}}</p>
-</div>
-<div>
+    {% macro sentence_case(text) %}
+        {{ text[0]|upper}}{{text[1:] }}
+    {% endmacro %}
     {% for version in versions %}
-        <p>{{version}}</p>
+        <p>{{ sentence_case(version) }}</p>
     {% endfor %}
 </div>
 <div>

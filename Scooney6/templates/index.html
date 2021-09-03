@@ -9,9 +9,11 @@
 <body>
     <div class="Navbar">
         <div class="Home">
-            <button class="ui icon button">
-                <i class="home icon"></i>
-            </button>
+            <form action="/" method="GET">
+                <button class="ui icon button">
+                    <i class="home icon"></i>
+                </button>
+            </form>
         </div>
         <div class="Title">
             <h1>Pokedex - By Scooney6</h1>
@@ -25,7 +27,7 @@
             {% for row in versions | slice(4) %}
             <div class="Row">
                 {% for version in row %}
-                <button class="ui button" style="width: 220px; margin: auto;" type="submit" name="version" value="{{ version }}">{{ version }}</button>
+                <button class="ui button" style="width: 220px; position: relative; display:inline-block;" type="submit" name="version" value="{{ version }}">{{ version }}</button>
                 {% endfor %}
             </div>
             {% endfor %}
