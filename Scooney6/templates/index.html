@@ -7,6 +7,9 @@
     <title>Pokedex - By Scooney6</title>
 </head>
 <body>
+    {% macro reformat(text) %}
+        {{ text|replace("-", " ")|title}}
+    {% endmacro %}
     <div class="Navbar">
         <div class="Home">
             <form action="/" method="GET">
@@ -24,10 +27,10 @@
     </div>
     <div class="Buttons">
         <form action="/version" method="GET">
-            {% for row in versions | slice(4) %}
+            {% for row in versions | slice(5) %}
             <div class="Row">
                 {% for version in row %}
-                <button class="ui button" style="width: 220px; position: relative; display:inline-block;" type="submit" name="version" value="{{ version }}">{{ version }}</button>
+                <button class="ui button" style="width: 220px; position: relative; display:inline-block;" type="submit" name="version" value="{{ version }}">{{ reformat(version) }}</button>
                 {% endfor %}
             </div>
             {% endfor %}

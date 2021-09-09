@@ -7,6 +7,9 @@
     <title>Title</title>
 </head>
 <body>
+    {% macro reformat(text) %}
+        {{ text|replace("-", " ")|title}}
+    {% endmacro %}
     <div class="Navbar">
         <div class="Home">
             <form action="/" method="GET">
@@ -16,29 +19,26 @@
             </form>
         </div>
         <div class="Title">
-            <h1>Pokemon {{version}}</h1>
+            <h1>Pokemon {{reformat(version)}}</h1>
         </div>
     </div>
 <div>
-    {% macro sentence_case(text) %}
-        {{ text[0]|upper}}{{text[1:] }}
-    {% endmacro %}
     {% for version in versions %}
-        <p>{{ sentence_case(version) }}</p>
+        <p>{{ reformat(version) }}</p>
     {% endfor %}
 </div>
 <div>
-    <p>{{generation}}</p>
+    <p>{{ reformat(generation) }}</p>
 </div>
 <div>
     {% for region in regions %}
-        <p>{{region}}</p>
+        <p>{{ reformat(region) }}</p>
     {% endfor %}
 </div>
 <div>
     <form action="/pokedex" method="GET">
         {% for pokedex in pokedexes %}
-            <button class="ui button" type="submit" name="pokedex" value={{pokedex}}>{{pokedex}}</button>
+            <button class="ui button" type="submit" name="pokedex" value={{pokedex}}>{{reformat(pokedex)}}</button>
         {% endfor %}
     </form>
 </div>
